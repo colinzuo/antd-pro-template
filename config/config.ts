@@ -16,10 +16,14 @@ export default defineConfig({
     type: 'browser',
   },
   locale: {
-    // default zh-CN
+    // check plugin-locale for detail doc
+    // priority order
+    //  localStorage
+    //  navigator.language
+    //  default
+    //  zh-CN
     default: 'zh-CN',
     antd: true,
-    // default true, when it is true, will use `navigator.language` overwrite default
     baseNavigator: true,
   },
   dynamicImport: {
@@ -34,6 +38,8 @@ export default defineConfig({
   theme: {
     'primary-color': defaultSettings.primaryColor,
   },
+  // 如果需要自行通过 react-helment 等方式渲染 title，
+  // 配 title: false 可禁用内置的 title 渲染机制
   title: false,
   ignoreMomentLocale: true,
   proxy: proxy[REACT_APP_ENV || 'dev'],
